@@ -1,0 +1,294 @@
+.mainContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+.pageHeader {
+  margin-bottom: 36px;
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.wavePattern {
+  position: absolute;
+  z-index: -1;
+  width: 120%;
+  height: 80%;
+  top: 10%;
+  left: -10%;
+  fill: none;
+  stroke: #b65e43;
+  stroke-width: 0.7;
+  opacity: 0.22;
+  pointer-events: none;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.wavePattern path {
+  stroke-width: 0.65;
+  opacity: 0.65;
+}
+
+.wavePattern path.waveAccent {
+  stroke: #758664;
+  stroke-width: 1.1;
+  opacity: 0.9;
+}
+
+.card:hover .wavePattern {
+  transform: scale(1.06);
+  opacity: 0.4;
+}
+
+.card:nth-child(even) .wavePattern {
+  transform: rotate(5deg) scale(1.08);
+}
+
+.eyebrow {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #8d7963;
+}
+
+h1 {
+  margin: 14px 0 8px;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+h1 span {
+  color: #b65e43;
+}
+
+.subtitle {
+  margin: 0;
+  color: #817a6e;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 38px;
+  font-family: Arial, sans-serif;
+}
+
+.controls label {
+  font-size: 13px;
+  color: #625d52;
+}
+
+.controls input {
+  width: 72px;
+  padding: 10px;
+  border: 1px solid #d8d0c3;
+  border-radius: 5px;
+  background: #faf8f3;
+  color: #28271f;
+  font: inherit;
+}
+
+.controls button {
+  padding: 11px 17px;
+  border: 1px solid #28271f;
+  border-radius: 5px;
+  background: #28271f;
+  color: #faf8f3;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.controls button:hover {
+  background: #51483c;
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #817a6e;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.card {
+  aspect-ratio: 5 / 6;
+  min-width: 0;
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #fcfaf5;
+  border: 1px solid #e4dccf;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgb(45 36 22 / 4%);
+
+  cursor: grab;
+  user-select: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 10px 24px rgb(45 36 22 / 9%);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.dragging {
+  opacity: 0.35;
+  transform: scale(0.96);
+}
+
+.card.dragOver {
+  border: 2px dashed #b65e43;
+  background: #f7eee4;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardIndex {
+  color: #b1a798;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.degree {
+  color: #9a5c43;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.cardNote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  overflow-wrap: anywhere;
+}
+
+.chordType {
+  color: #7b8b68;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chordType.minor {
+  color: #b65e43;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 13px;
+  border-top: 1px solid #eae3d8;
+}
+
+.rhythm {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.beatDot {
+  display: block;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border: 1px solid #d2c9bb;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.beatDot.active {
+  background: #b65e43;
+  border-color: #b65e43;
+}
+
+.rhythmText {
+  color: #aaa092;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.emptyState {
+  padding: 60px 20px;
+  text-align: center;
+  color: #817a6e;
+}
+
+.emptyState h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .mainContainer {
+    padding: 32px 18px 48px;
+  }
+
+  .cardContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    aspect-ratio: 4 / 5;
+    padding: 13px;
+  }
+
+  .cardNote {
+    font-size: 30px;
+  }
+
+  .rhythm {
+    gap: 5px;
+  }
+
+  .beatDot {
+    width: 7px;
+    height: 7px;
+    flex-basis: 7px;
+  }
+}

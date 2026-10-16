@@ -1,0 +1,10 @@
+:global(body) {
+  margin: 0;
+  background: #f3efe7;
+  color: #28271f;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+:global(*) {
+  box-sizing: border-box;
+}

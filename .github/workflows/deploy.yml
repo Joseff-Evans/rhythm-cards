@@ -11,9 +11,17 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
 
     steps:
       - name: Get repository code
@@ -28,11 +36,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Svelte app
-        run: npm run build
-
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
+      - name: Build Svelte app
+        run: npm run build
 
       - name: Upload built site
         uses: actions/upload-pages-artifact@v3
@@ -40,4 +48,5 @@ jobs:
           path: dist
 
       - name: Publish site
+        id: publish
         uses: actions/deploy-pages@v4
